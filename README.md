@@ -37,9 +37,9 @@ Option `-m` means "message", this is the description message for this commit tha
 Now it is time to connect your local git repository and the remote git repository on github. In terminal, write this:
 >`git remote add origin https://github.com/Gruximillian/test.git`
 
-This will connect your local git repository (on your computer) and remote git repository (on github). **Of course, your link to the repository will be different, so take care of that.**
+This will tell git (on your computer) where is remote git repository (on github). **Of course, your link to the repository will be different, so take care of that.**
 
-Finally, you want to send your local changes to the github. It is said that you want to **push** a commit. In your terminal, enter this command:
+Finally, you want to set that git tracks changes on a remote repository and vice versa, and send your local changes to the github. It is said that you want to **push** a commit. In your terminal, enter this command:
 >`git push -u origin master`
 
 Now, you will be asked to enter your github password so that you can be allowed to send files to github.
@@ -49,8 +49,8 @@ Now, your files are on github.
 If later you change your files, you can send to github these new changes with just three steps:
 
 >`git add *`<br>
-`git commit -m "Message for new commit"`<br>
->`git push origin master`
+>`git commit -m "Message for new commit"`<br>
+>`git push`
 
 And now, these new changes are saved on github.
 

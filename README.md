@@ -27,12 +27,12 @@ If you now enter in your terminal this command:
 git will show you that there are untracked files in this directory. You will now add them to git so that these files can be tracked. Use this command in your terminal:
 >`git add *`
 
-The star means that you will add all untracked files to git. You can do this separately for every file by substituting star with the file name, if you want. If you now try `git status` it will show that these files are now tracked. You do not need to do `git add` anymore for these files, only if you add new files, then you should add them like this.
+The star means that you will add all untracked files to git. You can do this separately for every file by substituting star with the file name, if you want. If you now try `git status` it will show that these files are now tracked.
 
 When your files are finished, or even if they are not but you want to save current state, it is time to save a "snapshot" of your files to git. You can do this with command:
 >`git commit -m "Description for commit"`
 
-Option `-m` means "message", this is the description message for this commit that you will enter in quotes after `-m`. So, here you can describe what did you do in your project in this commit.
+Option `-m` means "message", this is the description message for this commit that you will enter within quotes after `-m`. So, here you can describe what did you do in your project in this commit.
 
 Now it is time to connect your local git repository and the remote git repository on github. In terminal, write this:
 >`git remote add origin https://github.com/Gruximillian/test.git`
@@ -46,9 +46,10 @@ Now, you will be asked to enter your github password so that you can be allowed 
 Since I have a setup for using **ssh** protocol, I can't test this to the end, but it should be working.
 
 Now, your files are on github.
-If later you change your files, you can send to github these new changes with just two steps:
+If later you change your files, you can send to github these new changes with just three steps:
 
->`git commit -m "Mesage for new commit"`<br>
+>`git add *`<br>
+`git commit -m "Message for new commit"`<br>
 >`git push origin master`
 
 And now, these new changes are saved on github.

@@ -48,8 +48,8 @@ Since I have a setup for using **ssh** protocol, I can't test this to the end, b
 Now, your files are on github.
 If later you change your files, you can send to github these new changes with just two steps:
 
->`git commit -m "Mesage for new commit"`
-`git push origin master`
+>`git commit -m "Mesage for new commit"`<br>
+>`git push origin master`
 
 And now, these new changes are saved on github.
 

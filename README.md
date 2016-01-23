@@ -1,3 +1,5 @@
+Created this branch to test using a branch from different repository described in [this article](https://github.com/Gruximillian/git_practice/tree/master#using-different-remote-for-a-branch).
+
 I usually host my images at my google picasa gallery. And linking worked everywhere so far. You just need to right click on the image and select *'copy image location'* option or, from options to to the right, select link to the image and check *'image only, no link'* checkbox. Let's try it here.
 
 Say hello to Odin!<br>

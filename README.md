@@ -1,76 +1,57 @@
-This is a try to add remote repository by using `git config` command.
+I usually host my images at my google picasa gallery. And linking worked everywhere so far. You just need to right click on the image and select *'copy image location'* option or, from options to to the right, select link to the image and check *'image only, no link'* checkbox. Let's try it here.
 
-It turns out, that this is possible. Now I will make a few more tests, like some push and pull tests and after that, I'll try adding a new branch through `git config`<br>
-Then, I will add here steps taken to achieve that.<br>
-This is edited on GitHub so I can try pulling.
+Say hello to Odin!<br>
+![Odin](https://lh3.googleusercontent.com/-MOZyebVNZz0/Te6NSNah7CI/AAAAAAAAPeo/hiO98k71jAA/s288-Ic42/DVCI0162.jpg)
 
-# The steps taken
+But, for this course I upload images in the repository along with assignment files. It is more convenient to keep files together. It is easy, but you need to do some configuring before you can start doing it that way.
 
-## Creating repository
+For those who would like to do it this way right now, I will try to explain how you can do it. We will learn much more on using git and github soon, I beleive, so you don't need to bother right now if it is complicated to you. Let's start.
 
-Create repository with `git init` command inside `git_practice` directory.
+When you clicked a link to accept your assignment and went to the github page for your assignment you get something similar to this screenshot here:
 
-The `.git/config` file that is created at this moment looks like this:
+![Github new repository](https://lh3.googleusercontent.com/-MFy4C0qbPC4/VoJsHV_MKTI/AAAAAAAARLw/gYU7Iq_xHhk/s800-Ic42/git_new_repository.png)
 
-```
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-```
+Your repositiry now exists on the github site, but not on your computer. Now, we are following section that says ***…or create a new repository on the command line***, but not litteraly.
 
-There is no information about remote repository, and at this point it does not exist either.<br>
-Next thing, go to GitHub and create a remote repository. After creating a remote repository, copy the url for repository. e.g. `git@github.com:Gruximillian/git_practice.git`<br>
-Now, there are two repositories, local and remote, and at this point they are not connected.
+First, in your terminal (command line program), navigate to the folder where you want your assignment files to be.
 
-## Connecting local and remote repository
+Now use command:
+>`git init`
 
-To connect local and remote repository and set tracking between them we can use the following commands (this is the standard approach, and we will not use it here, this is here just to compare with used approach, covered bellow):
+This will tell git that it needs to track changes in this directory.
 
-```
-git remote add origin git@github.com:Gruximillian/git_practice.git
-git push -u origin master
-```
+Next, add your files to the folder: text files, images, folders, anything what you need for the assignment.
+If you now enter in your terminal this command:
+>`git status`
 
-The first command sets url for remote named "origin" and the second command is connecting our local master branch and remote master branch to track each other and performs a push. **This is not what we will do!** :wink:
+git will show you that there are untracked files in this directory. You will now add them to git so that these files can be tracked. Use this command in your terminal:
+>`git add *`
 
-The information about remote repository is being kept inside `.git/config` file bellow `[remote]` section of the file. Inside that section there are two variables to set: `url` and `fetch`.<br>
-The `url` part specifies the url of the remote repository (url that we copied from the GitHub) and the `fetch` part that has the format `+source:destination`.<br>
-`source` is specifying branches from the remote repository and `destination` part is specifying the names of corresponding branches in the local repository. For remote named "origin" we can set those like this:<br>
+The star means that you will add all untracked files to git. You can do this separately for every file by substituting star with the file name, if you want. If you now try `git status` it will show that these files are now tracked.
 
-```
-git config remote.origin.url "git@github.com:Gruximillian/git_practice.git"
-git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-```
-(`remote` part is the section and the remote name `"origin"` is its subsection in the `config` file)<br>
-In the `config`, the following section is added:
+When your files are finished, or even if they are not but you want to save current state, it is time to save a "snapshot" of your files to git. You can do this with command:
+>`git commit -m "Description for commit"`
 
-```
-[remote "origin"]
-	url = git@github.com:Gruximillian/git_practice.git
-	fetch = +refs/heads/*:refs/remotes/origin/*`
-```
+Option `-m` means "message", this is the description message for this commit that you will enter within quotes after `-m`. So, here you can describe what did you do in your project in this commit.
 
-## Set tracking between local and remote repository
+Now it is time to connect your local git repository and the remote git repository on github. In terminal, write this:
+>`git remote add origin https://github.com/Gruximillian/test.git`
 
-Now that remote repository is defined, if we try `git push` or `git pull` git will complain that it does not know to where or from here to push or pull. It will ask you to specify the name of the branch, like this: `git push master` or `git pull master`.
+This will tell git (on your computer) where is remote git repository (on github). **Of course, your link to the repository will be different, so take care of that.**
 
-Next thing we need to do is set tracking between local and remote branches. For `master` branch we will do it inside `[branch "master"]` subsection (`branch` is section and the branch name `"master"` is its subsection), like this:
+Finally, you want to set that git tracks changes on a remote repository and vice versa, and send your local changes to the github. It is said that you want to **push** a commit. In your terminal, enter this command:
+>`git push -u origin master`
 
-```
-git config branch.master.remote "origin"
-git config branch.master.merge "refs/heads/master"
-```
+Now, you will be asked to enter your github password so that you can be allowed to send files to github.
+Since I have a setup for using **ssh** protocol, I can't test this to the end, but it should be working.
 
-Now, we get new section in the `config` file:
+Now, your files are on github.
+If later you change your files, you can send to github these new changes with just three steps:
 
-```
-[branch "master"]
-	remote = origin
-	merge = refs/heads/master
-```
+>`git add *`<br>
+>`git commit -m "Message for new commit"`<br>
+>`git push`
 
-In this section it is specified that the `master` branch will track `master` branch from remote repository called `origin`.
+And now, these new changes are saved on github.
 
-Now that we have set up remote repository for the `master` branch and tracking between remote and local master branches. To push and pull from and to master branch we can now use just `git push` and `git pull`.
+I hope I was clear enough so you can benefit from this reading. If you have questions feel free to ask, and if I can, I will gladly help.

@@ -145,8 +145,8 @@ Now, we get new section in the `config` file:
 ```
 
 This is telling git to fetch from the `other_remote` repository and to merge remote `newone` branch into our `newone` branch.<br>
-Our local `newone` branch is actually a remote branch of the `other_remote` repository, and not for remote `origin` repository. 
-
+Our local `newone` branch is actually a remote branch of the `other_remote` repository, and not for remote `origin` repository. So, GitHub repository `git_practice` will not have `newone` branch, but the `test` repository
+[will have it](https://github.com/Gruximillian/test/tree/newone).
 Notice that if we want to use `master` branch from the `other_remote` we will get conflicting definitions for master branch:
 
 ```

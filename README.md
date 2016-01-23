@@ -4,6 +4,10 @@ It turns out, that this is possible. Now I will make a few more tests, like some
 Then, I will add here steps taken to achieve that.<br>
 This is edited on GitHub so I can try pulling.
 
+___
+
+***The "disciple" branch:***
+
 This is only visible on branch "disciple":<br>
 Created new branch "disciple" and not edited `config` file to see what will happen.
 

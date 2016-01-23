@@ -74,3 +74,40 @@ Now, we get new section in the `config` file:
 In this section it is specified that the `master` branch will track `master` branch from remote repository called `origin`.
 
 Now that we have set up remote repository for the `master` branch and tracking between remote and local master branches. To push and pull from and to master branch we can now use just `git push` and `git pull`.
+
+## Creating new branch and setting its remote and tracking
+
+What is a master without an apprentice?<br>
+Let's create new branch that will be called "apprentice":
+
+`git branch apprentice`
+
+Now we have another branch that we can checkout (`git checkout apprentice`) and make some changes to the files inside that branch.<br>
+Since the remote repository is set, we can push these changes to the remote, but if we try to pull changes for this branch from its remote counterpart we will get a message that there is no tracking information for this branch and that pull can not be performed.
+
+Normally, we can do that with:
+
+`git branch -u origin/apprentice apprentice`
+
+but, we are not here to do things in a "normal" way.
+
+We want to use `git config` to set up tracking for `apprentice` branch. Since the remote location is already set, we just need to do the tracking part like we did for the master branch:
+
+```
+git config branch.apprentice.remote "origin"
+git config branch.apprentice.merge "refs/heads/apprentice"
+```
+
+Now, we get new section in the `config` file:
+
+```
+[branch "apprentice"]
+	remote = origin
+	merge = refs/heads/apprentice
+```
+
+And now, if we are on the `apprentice` branch, we can use just `git push` and `git pull`, without specifying the branch name, to push an pull on this branch.
+
+## Using different remote for a branch
+
+> Why do it simple when you can complicate it

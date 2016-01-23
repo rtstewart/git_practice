@@ -133,7 +133,7 @@ Next, we will create new branch (`git branch newone`), and lastly, we need to se
 
 ```
 git config branch.newone.remote "other_remote"
-git config branch.newone.merge "refs/heads/master"
+git config branch.newone.merge "refs/heads/newone"
 ```
 
 Now, we get new section in the `config` file:
@@ -141,10 +141,28 @@ Now, we get new section in the `config` file:
 ```
 [branch "newone"]
 	remote = other_remote
+	merge = refs/heads/newone
+```
+
+This is telling git to fetch from the `other_remote` repository and to merge remote `newone` branch into our `newone` branch.<br>
+Our local `newone` branch is actually a remote branch of the `other_remote` repository, and not for remote `origin` repository. 
+
+Notice that if we want to use `master` branch from the `other_remote` we will get conflicting definitions for master branch:
+
+```
+[branch "master"]
+	remote = other_remote
 	merge = refs/heads/master
 ```
 
-This is telling git to fetch from the `other_remote` repository and to merge remote `master` branch into our `newone` branch.
+will conflict with:
+
+
+```
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+```
 
 The usage of different repositories for different branches may or may not be smart, useful or needed. Is this in some way useful or needed, I can't say at this moment, because my experience with Git is pretty much superficial.<br>
 But, it is obvious that is is doable, and that was all the point of this section and very much the point of this complete article, because everything described here can be achieved with Gits built in commands.

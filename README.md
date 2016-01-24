@@ -1,5 +1,3 @@
-> Pushed from branch with git push
-
 > Created this branch to test using a branch from different repository described in [this 
 article](https://github.com/Gruximillian/git_practice/tree/master#using-different-remote-for-a-branch).
 

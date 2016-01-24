@@ -12,3 +12,5 @@ This is only visible on the branch "apprentice".
 Now, I created new branch "apprentice", and edited `config` file to set up remote branch for it.<br>
 
 It all works, pushing and pulling, for this branch.
+New line, to test some git push commands.
+

@@ -1,1 +1,2 @@
 detached file
+new line in the file

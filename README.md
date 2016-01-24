@@ -17,3 +17,5 @@ It turns out that there is no need to edit `config` file, git automatically sets
 Now, I am thinking that it may be possible to set up completely new remote for a branch. But, I don't see any reason why would someone do that. Anyway, I'll try it, just out of curiosity.
 
 New line for testing `git push --all`
+
+Trying out pulling after deleting remote branch and pushing it with `git push --all`.

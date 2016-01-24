@@ -19,3 +19,5 @@ Now, I am thinking that it may be possible to set up completely new remote for a
 New line for testing `git push --all`
 
 Trying out pulling after deleting remote branch and pushing it with `git push --all`.
+
+Trying out `git pull -s resolve --commit` command.

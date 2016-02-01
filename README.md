@@ -12,7 +12,7 @@ Create repository with `git init` command inside `git_practice` directory.
 
 The `.git/config` file that is created at this moment looks like this:
 
-```
+```shell
 [core]
 	repositoryformatversion = 0
 	filemode = true
@@ -21,14 +21,18 @@ The `.git/config` file that is created at this moment looks like this:
 ```
 
 There is no information about remote repository, and at this point it does not exist either.<br>
-Next thing, go to GitHub and create a remote repository. After creating a remote repository, copy the url for repository. e.g. `git@github.com:Gruximillian/git_practice.git`<br>
+Next thing, go to GitHub and create a remote repository. After creating a remote repository, copy the url for repository. e.g. 
+```shell
+git@github.com:Gruximillian/git_practice.git
+```
+
 Now, there are two repositories, local and remote, and at this point they are not connected.
 
 ## Connecting local and remote repository
 
 To connect local and remote repository and set tracking between them we can use the following commands (this is the standard approach, and we will not use it here, this is here just to compare with used approach, covered bellow):
 
-```
+```shell
 git remote add origin git@github.com:Gruximillian/git_practice.git
 git push -u origin master
 ```
@@ -39,14 +43,14 @@ The information about remote repository is being kept inside `.git/config` file 
 The `url` part specifies the url of the remote repository (url that we copied from the GitHub) and the `fetch` part that has the format `+source:destination`.<br>
 `source` is specifying branches from the remote repository and `destination` part is specifying the names of corresponding remote branches in the local repository. For remote named "origin" we can set those like this:<br>
 
-```
+```shell
 git config remote.origin.url "git@github.com:Gruximillian/git_practice.git"
 git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 ```
 (`remote` part is the section and the remote name `"origin"` is its subsection in the `config` file)<br>
 In the `config`, the following section is added:
 
-```
+```shell
 [remote "origin"]
 	url = git@github.com:Gruximillian/git_practice.git
 	fetch = +refs/heads/*:refs/remotes/origin/*`
@@ -58,14 +62,14 @@ Now that remote repository is defined, if we try `git push` or `git pull` git wi
 
 Next thing we need to do is set tracking between local and remote branches. For `master` branch we will do it inside `[branch "master"]` subsection (`branch` is section and the branch name `"master"` is its subsection), like this:
 
-```
+```shell
 git config branch.master.remote "origin"
 git config branch.master.merge "refs/heads/master"
 ```
 
 Now, we get new section in the `config` file:
 
-```
+```shell
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
@@ -80,27 +84,31 @@ Now that we have set up remote repository for the `master` branch and tracking b
 What is a master without an apprentice?<br>
 Let's create new branch that will be called "apprentice":
 
-`git branch apprentice`
+```shell
+git branch apprentice
+```
 
 Now we have another branch that we can checkout (`git checkout apprentice`) and make some changes to the files inside that branch.<br>
 Since the remote repository is set, we can push these changes to the remote, but if we try to pull changes for this branch from its remote counterpart we will get a message that there is no tracking information for this branch and that pull can not be performed.
 
 Normally, we can do that with:
 
-`git branch -u origin/apprentice apprentice`
+```shell
+git branch -u origin/apprentice apprentice
+```
 
 but, we are not here to do things in a "normal" way.
 
 We want to use `git config` to set up tracking for `apprentice` branch. Since the remote location is already set, we just need to do the tracking part like we did for the master branch:
 
-```
+```shell
 git config branch.apprentice.remote "origin"
 git config branch.apprentice.merge "refs/heads/apprentice"
 ```
 
 Now, we get new section in the `config` file:
 
-```
+```shell
 [branch "apprentice"]
 	remote = origin
 	merge = refs/heads/apprentice
@@ -116,14 +124,14 @@ Looking at the `.git/config` file, we can conclude that we can add another subse
 
 For defining new `remote`, as we noticed above, we need to add another subsection for that new remote:
 
-```
+```shell
 git config remote.other_remote.url "git@github.com:Gruximillian/test.git"
 git config remote.other_remote.fetch "+refs/heads/*:refs/remotes/other_remote/*"
 ```
 This will add a new remote repository called "test", and set new remote branch called "other_remote".<br>
 In the `config`, the following section is added:
 
-```
+```shell
 [remote "other_remote"]
 	url = git@github.com:Gruximillian/test.git
 	fetch = +refs/heads/*:refs/remotes/other_remote/*`
@@ -131,14 +139,14 @@ In the `config`, the following section is added:
 
 Next, we will create new branch (`git branch newone`), and lastly, we need to set up tracking for this branch:
 
-```
+```shell
 git config branch.newone.remote "other_remote"
 git config branch.newone.merge "refs/heads/newone"
 ```
 
 Now, we get new section in the `config` file:
 
-```
+```shell
 [branch "newone"]
 	remote = other_remote
 	merge = refs/heads/newone
@@ -149,7 +157,7 @@ Our local `newone` branch is actually a remote branch of the `other_remote` repo
 [will have it](https://github.com/Gruximillian/test/tree/newone).
 Notice that if we want to use `master` branch from the `other_remote` we will get conflicting definitions for master branch:
 
-```
+```shell
 [branch "master"]
 	remote = other_remote
 	merge = refs/heads/master
@@ -158,7 +166,7 @@ Notice that if we want to use `master` branch from the `other_remote` we will ge
 will conflict with:
 
 
-```
+```shell
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master

@@ -1,0 +1,16 @@
+Hey Vojislav,
+
+I am trying to contact you directly regarding our Mastering GitHub project.
+I put my name in the list of github repos next to yours for https://github.com/lodash/lodash. At that repo, there is not much in the way of a quick 'rundown' of what lodash is or what it does, so perhaps that might be a good choice. Also, it may be practical to learn a bit about lodash since my very brief skimming of info on it suggests it's a popular JS utility library and a fork of underscore.js.
+
+I noticed that you seem to have some PHP experience, which I do also at a very elementary level. I would also consider doing the project for https://github.com/laravel/laravel since that README.md has incomprehensible buzz words for me. I think addressing something with this repo would be more difficult than for lodash though partially because of that - I could be wrong though.
+
+What are your thoughts?
+
+I am on the east coast of the U.S. and so am 6 hours behind you as far as I can gather. I wanted to extend my contact information to you in case you would like to proceed to work together on this project. Please let me know at your convenience.
+
+Regards,
+
+Bobby Stewart
+bobstewart@goodtiming.com
+Skype: r.t.stewart
